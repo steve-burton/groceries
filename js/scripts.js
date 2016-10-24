@@ -2,6 +2,8 @@ var item1;
 var item2;
 var item3;
 var items;
+var itemTest = true;
+
 
 $(document).ready(function() {
   $("#input").submit(function(event) {
@@ -14,9 +16,16 @@ $(document).ready(function() {
     items.sort();
 
     items.forEach(function(item) {
-      $("#groceryList").append("<li>" + item.toUpperCase() + "</li>");
+      if (item) {
+        $("#groceryList").append("<li>" + item.toUpperCase() + "</li>");
+      } else {
+        alert("Please enter an item in every box.");
+        itemTest = false;
+      }
     });
 
-    $("#input").hide();
+    if (itemTest) {
+      $("#input").hide();
+    };
   });
 });
